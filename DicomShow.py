@@ -1,5 +1,4 @@
 import pydicom
-import numpy
 import matplotlib.pyplot as plt
 filename = pydicom.data.get_testdata_file("CT_small.dcm")
 dc = pydicom.dcmread(filename)
