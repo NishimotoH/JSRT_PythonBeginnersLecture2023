@@ -1,3 +1,4 @@
+#%%
 # import packages
 import pydicom
 import numpy as np
@@ -21,3 +22,5 @@ for x in range(0, dc.pixel_array.shape[0]):
 # Show imBone
 plt.imshow(imBone, cmap=plt.cm.gray)
 plt.show()
+
+dc.pixel_array[43,43]
