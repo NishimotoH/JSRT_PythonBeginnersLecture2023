@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 filename = pydicom.data.get_testdata_file("CT_small.dcm")
 dc = pydicom.dcmread(filename)
 
-# Threshoulding -> imBone
+# Thresholding -> imBone
 threshould = 1400
 print(dc.pixel_array.shape)
 imBone = np.zeros(dc.pixel_array.shape)
