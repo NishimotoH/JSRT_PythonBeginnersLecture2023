@@ -1,5 +1,3 @@
-# %%
-# import packages
 import pydicom
 import numpy as np
 import matplotlib.pyplot as plt
@@ -23,4 +21,8 @@ for x in range(0, dc.pixel_array.shape[0]):
 plt.imshow(imBone, cmap=plt.cm.gray)
 plt.show()
 
-dc.pixel_array[43, 43]
+# Other method for threshoulding
+imBone2 = np.zeros(dc.pixel_array.shape)
+imBone2 = dc.pixel_array > threshould
+plt.imshow(imBone2, cmap=plt.cm.gray)
+plt.show()
