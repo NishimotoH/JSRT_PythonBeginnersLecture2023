@@ -6,6 +6,8 @@ M0 = 1000
 T1 = 0.3
 
 # Function for Mz
+
+
 def funcT1(M0, T1, t):
     Mz = M0 * (1 - np.exp(-t / T1))
     return Mz

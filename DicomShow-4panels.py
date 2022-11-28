@@ -13,10 +13,10 @@ threshould = 1400
 imBone = np.zeros(dc.pixel_array.shape)
 for x in range(0, dc.pixel_array.shape[0]):
     for y in range(0, dc.pixel_array.shape[1]):
-        if dc.pixel_array[x,y] > threshould:
-            imBone[x,y] = 1
+        if dc.pixel_array[x, y] > threshould:
+            imBone[x, y] = 1
         else:
-            imBone[x,y] = 0
+            imBone[x, y] = 0
 
 # Thresholding by Otsu's method
 imUint16 = dc.pixel_array.astype(np.uint16)
