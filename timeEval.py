@@ -21,7 +21,7 @@ for x in range(0, dc.pixel_array.shape[0]):
             imBone1[x, y] = 0
 time_end = time.time()
 tim = time_end- time_sta
-print(tim)
+print("DICOM original: "+ str(tim))
 
 time.sleep(1.0)
 
@@ -34,7 +34,7 @@ for x in range(0, dc.pixel_array.shape[0]):
             imBone2[x, y] = 1
 time_end = time.time()
 tim = time_end- time_sta
-print(tim)
+print("DICOM No \"else\": " + str(tim))
 
 time.sleep(1.0)
 
@@ -44,12 +44,16 @@ time_sta = time.time()
 imBone3 = (dc.pixel_array > threshold1)
 time_end = time.time()
 tim = time_end- time_sta
-print(tim)
+print("DICOM No \"if\" and \"for\": " + str(tim))
+
+time.sleep(1.0)
 
 
-# Big size list (10,000 x 10,000 matrix, random)
+# Big size list (5,000 x 5,000 matrix, random)
 bsl = np.random.randint(0, 100, (5000, 5000))
 threshold2 = 500
+print("====================")
+print("Big size list. Mat: " + str(bsl.shape[0]) + " x " + str(bsl.shape[1]))
 
 # Original
 time_sta = time.time()
@@ -62,7 +66,7 @@ for x in range(0, bsl.shape[0]):
             bsl1[x, y] = 0
 time_end = time.time()
 tim = time_end- time_sta
-print("Big size list, original: " + str(tim))
+print("Original: " + str(tim))
 
 
 # Eliminate "else"
@@ -74,7 +78,7 @@ for x in range(0, bsl.shape[0]):
             bsl2[x, y] = 1
 time_end = time.time()
 tim = time_end- time_sta
-print("Big size list, No \"else\": " + str(tim))
+print("No \"else\": " + str(tim))
 
 time.sleep(1.0)
 
@@ -84,4 +88,4 @@ time_sta = time.time()
 bsl3 = (bsl > threshold2)
 time_end = time.time()
 tim = time_end- time_sta
-print("Big size list, No \"if\" and \"for\": " + str(tim))
+print("No \"if\" and \"for\": " + str(tim))
