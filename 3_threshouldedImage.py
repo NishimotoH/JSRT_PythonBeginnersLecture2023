@@ -18,14 +18,5 @@ for x in range(0, dc.pixel_array.shape[0]):
             imBone[x, y] = 0
 
 # Show imBone
-#plt.imshow(imBone, cmap=plt.cm.gray)
-#plt.show()
-
-# Other method for threshoulding
-imBone2 = np.zeros(dc.pixel_array.shape)
-imBone2 = dc.pixel_array > threshould
-#plt.imshow(imBone2, cmap=plt.cm.gray)
-#plt.show()
-print(dc.pixel_array.size)
-imBone3 = np.zeros([200, 200])
-print(imBone3.shape)
+plt.imshow(imBone, cmap=plt.cm.gray)
+plt.show()
