@@ -1,3 +1,9 @@
+# Fig6_DicomShowThreshould.py の処理時間を比較するプログラム
+# 最初にオリジナル、else削除、if文とfor文の削除、の3つの方法で比較する。
+# 作者環境では1.08秒、1.02秒、0.00秒であった。
+# 次に 5000x5000 の行列で同様の処理を行う。
+# 作者環境では16.0秒、10.5秒、0.03秒であった。
+
 import pydicom
 import numpy as np
 import time

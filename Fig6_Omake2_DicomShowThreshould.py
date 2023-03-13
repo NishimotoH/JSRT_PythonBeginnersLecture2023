@@ -1,7 +1,15 @@
+# Fig4_DicomShow.py と Fig6_DicomShowThreshould.py の結果を
+# すべて一つの Window で表示させるプログラム。
+# 左上：Fig4
+# 左下：Fig6
+# 右上：ヒストグラム
+# 右下：Fig4 に対して openCV の大津の2値化法を適用した結果
+
+
 import pydicom
 import numpy as np
 import matplotlib.pyplot as plt
-import cv2
+import cv2  # To import "cv2", please run "pip install opencv-python"
 
 # Read DICOM data
 filename = pydicom.data.get_testdata_file("CT_small.dcm")
