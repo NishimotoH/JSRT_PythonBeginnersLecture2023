@@ -5,18 +5,17 @@
 # 右上：ヒストグラム
 # 右下：Fig4 に対して openCV の大津の2値化法を適用した結果
 
-
 import pydicom
 import numpy as np
 import matplotlib.pyplot as plt
-import cv2  # To import "cv2", please run "pip install opencv-python"
+import cv2  # 事前に"pip install opencv-python"を実行して cv2 を使えるようにしてください
 
-# Read DICOM data
+# DICOM データの読み込み
 filename = pydicom.data.get_testdata_file("CT_small.dcm")
 dc = pydicom.dcmread(filename)
 print(dc)
 
-# Thresholding to extract bone
+# なんとなく指定した閾値による手動の画像2値化
 threshould = 1400
 imBone = np.zeros(dc.pixel_array.shape)
 for x in range(0, dc.pixel_array.shape[0]):
@@ -26,23 +25,23 @@ for x in range(0, dc.pixel_array.shape[0]):
         else:
             imBone[x, y] = 0
 
-# Thresholding by Otsu's method
+# 大津の手法による画像２値化
 imUint16 = dc.pixel_array.astype(np.uint16)
 thOtsu, imOtsu = cv2.threshold(imUint16, 0, 255, cv2.THRESH_OTSU)
 print("Threshould: " + str(thOtsu))
 
-# Prepare a figure with 2x2 panels
+# 1つの figure に 2x2 に分割した画像を提示するための準備
 fig = plt.figure()
 ax1 = fig.add_subplot(2, 2, 1)
 ax2 = fig.add_subplot(2, 2, 2)
 ax3 = fig.add_subplot(2, 2, 3)
 ax4 = fig.add_subplot(2, 2, 4)
 
-# Set images for each panels
-ax1.imshow(dc.pixel_array, cmap=plt.cm.gray)
-ax2.hist(np.ravel(dc.pixel_array), bins=100)
-ax3.imshow(imBone, cmap=plt.cm.gray)
-ax4.imshow(imOtsu, cmap=plt.cm.gray)
+# 2x2 の各パネルに対して表示させる画像を指定する
+ax1.imshow(dc.pixel_array, cmap=plt.cm.gray) # オリジナル画像
+ax2.hist(np.ravel(dc.pixel_array), bins=100) # ヒストグラム
+ax3.imshow(imBone, cmap=plt.cm.gray) # 手動の2値化
+ax4.imshow(imOtsu, cmap=plt.cm.gray) # 大津の手法による2値化
 
-# Drawing the figure
+# 画像を表示する
 plt.show()
